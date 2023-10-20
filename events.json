@@ -2,7 +2,7 @@
 	{
 		"DetailType": "tiaki-trigger",
 		"Source": "com.eventBridge.trigger",
-		"Detail": "{\"hook\":{\"id\":9,\"event\":\"alert.added\",\"target\":\"https://b7f5-202-79-35-208.in.ngrok.io/api/v2/webhook-test/\"},\"data\":{\"model\":\"schools.alert\",\"pk\":344,\"fields\":{\"name\":804,\"created\":\"2023-02-21T04:08:31.057Z\",\"school\":205,\"content_type\":\"None\",\"object_id\":\"None\",\"initiator\":32,\"police_status\":\"not_notified\",\"scoped\":false,\"silent\":false,\"internal\":false,\"pending_approval\":false}}}",
+		"Detail": "{\"hook\":{\"id\":9,\"event\":\"alert.added\",\"target\":\"https://b7f5-202-79-35-208.in.ngrok.io/api/v2/webhook-test/\"},\"data\":{\"model\":\"schools.alert\",\"pk\":3686,\"fields\":{\"name\":804,\"created\":\"2023-02-21T04:08:31.057Z\",\"school\":409,\"content_type\":\"None\",\"object_id\":\"None\",\"initiator\":32,\"police_status\":\"not_notified\",\"scoped\":false,\"silent\":false,\"internal\":false,\"pending_approval\":false}}}",
 		"EventBusName": "TiakiEventBus"
 	}
 ]

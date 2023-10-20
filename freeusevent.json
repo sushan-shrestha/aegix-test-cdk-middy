@@ -1,0 +1,8 @@
+[
+  {
+    "DetailType": "freeus-trigger",
+    "Source": "com.eventBridge.trigger",
+    "Detail": "{\"event\":{\"eventId\":\"ff5197e3-14df-4b82-8792-bfcd72e6072f\",\"deviceId\":\"1234\",\"siteId\":\"343\",\"area\":null,\"areaDescription\":null,\"comment\":\"J -- SeqNum: 77\",\"eventCode\":\"215F\",\"eventCodeDescription\":\"Medical - Mobile\",\"opAct\":\"SigBegin\",\"opActDescription\":\"Signal Begin\",\"serverId\":4,\"seqId\":42153142,\"signalCode\":null,\"signalCodeDescription\":null,\"signalFormat\":null,\"zone\":\"2790\",\"zoneDescription\":null,\"utcDate\":\"2021-02-03T23:49:58.813\",\"MonitoringCenterId\":\"SECAB0F78\",\"MessageSeqId\":4,\"MessageDate\":\"2021-02-03T23:49:58.813\",\"userId\":null,\"isFullClear\":true,\"callDisposition\":null,\"callDispositionDescription\":null,\"latitude\":null,\"longitude\":null,\"phone\":null,\"userName\":null},\"source\":{\"id\":\"vendor-123\",\"label\":\"Vendor Label\",\"description\":\"Description of the alert source; typically a vendor or branded system\",\"additionalProp1\":{}}}",
+    "EventBusName": "TiakiEventBus"
+  }
+]

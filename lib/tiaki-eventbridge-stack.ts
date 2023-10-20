@@ -28,17 +28,35 @@ export class TiakiEventBridgeStack extends Stack {
 
     const tiakiLambda = new NodejsFunction(this, "tiakiLambdaFunction", {
       handler: "index.handler",
-      entry: join(__dirname, `../handlers/handler.ts`),
+      entry: join(__dirname, `../handlers/announceHandler.ts`),
+      ...nodeJsFunctionProps,
+      timeout: Duration.seconds(60),
+    });
+
+    // const freeUsLambdaArn =
+    //   "arn:aws:lambda:us-west-2:973019961139:function:freeus-integration";
+
+    // const freeUsLambda = NodejsFunction.fromFunctionArn(
+    //   this,
+    //   "freeUsLambdaFunction",
+    //   freeUsLambdaArn
+    // );
+
+    const freeUsLambda = new NodejsFunction(this, "freeUsLambdaFunction", {
+      handler: "index.handler",
+      entry: join(__dirname, `../handlers/freeUsHandler.ts`),
       ...nodeJsFunctionProps,
       timeout: Duration.seconds(60),
     });
 
     tiakiLambda.addLayers(myLayer);
+    freeUsLambda.addLayers(myLayer);
 
     const eventBus = new EventBus(this, "TiakiEventBus", {
       eventBusName: "TiakiEventBus",
     });
-    // create event rule
+
+    // create event rule for announce
     const eventRule = new Rule(this, `TiakiEventRule`, {
       enabled: true,
       eventBus: eventBus,
@@ -49,8 +67,23 @@ export class TiakiEventBridgeStack extends Stack {
       },
     });
 
+    // create event rule for free us
+    const eventRuleFreeUs = new Rule(this, `FreeUsEventRule`, {
+      enabled: true,
+      eventBus: eventBus,
+      description: `works when event is received here with pattern defined for freeus`,
+      eventPattern: {
+        source: ["com.eventBridge.trigger"],
+        detailType: ["freeus-trigger"],
+      },
+    });
+
     eventRule.addTarget(new aws_events_targets.LambdaFunction(tiakiLambda));
+    eventRuleFreeUs.addTarget(
+      new aws_events_targets.LambdaFunction(freeUsLambda)
+    );
 
     eventBus.grantPutEventsTo(tiakiLambda);
+    eventBus.grantPutEventsTo(freeUsLambda);
   }
 }
